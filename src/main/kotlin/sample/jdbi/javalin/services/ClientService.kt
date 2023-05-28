@@ -11,7 +11,7 @@ class ClientService(private val db: Jdbi = Config.db) {
             .bind("id", id).mapToBean(Client::class.java).one()
     }
 
-    fun list(q: String = ""): List<Client> = db.withHandle<List<Client>, Exception> {
+    fun list(q: String? = ""): List<Client> = db.withHandle<List<Client>, Exception> {
         it.createQuery("select * from clients where name like :q")
             .bind("q", "%$q%").mapToBean(Client::class.java).list()
     }
