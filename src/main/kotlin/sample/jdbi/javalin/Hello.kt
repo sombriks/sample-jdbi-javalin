@@ -15,6 +15,7 @@ fun main() {
     val app = Javalin.create {
         it.staticFiles.enableWebjars()
         it.vue.vueAppName = "app"
+        it.vue.isDevFunction = { false }
     }
 
     app.get("/", VueComponent("hello-world"))
