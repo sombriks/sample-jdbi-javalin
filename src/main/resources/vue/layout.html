@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="@cdnWebjar/vue/3.2.38/dist/vue.global.js"></script>
+    <script>
+        const app = Vue.createApp({});
+    </script>
+    @componentRegistration
+</head>
+<body>
+<main id="main-vue" v-cloak>
+    @routeComponent
+</main>
+<script>
+    app.mount("#main-vue")
+</script>
+</body>
+</html>

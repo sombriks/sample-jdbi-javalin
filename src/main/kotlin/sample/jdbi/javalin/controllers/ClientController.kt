@@ -8,7 +8,7 @@ class ClientController(private val service: ClientService = ClientService()) {
 
     fun find(ctx: Context) = ctx.json(service.find(ctx.pathParam("id").toInt()))
 
-    fun list(ctx: Context) = ctx.json(service.list(ctx.queryParam("q")))
+    fun list(ctx: Context) = ctx.json(service.list(ctx.queryParam("q") ?: ""))
 
     fun insert(ctx: Context) = service.insert(ctx.bodyAsClass(Client::class.java))
 

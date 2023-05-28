@@ -2,6 +2,7 @@ package sample.jdbi.javalin
 
 import io.javalin.Javalin
 import io.javalin.apibuilder.ApiBuilder.*
+import io.javalin.vue.VueComponent
 import sample.jdbi.javalin.controllers.ClientController
 
 fun main() {
@@ -11,9 +12,12 @@ fun main() {
 
     val clientController = ClientController()
 
-    val app = Javalin.create(/*config*/)
+    val app = Javalin.create {
+        it.staticFiles.enableWebjars()
+        it.vue.vueAppName = "app"
+    }
 
-    app.get("/") { ctx -> ctx.result("Hello world") }
+    app.get("/", VueComponent("hello-world"))
     app.routes {
         path("clients") {
             get(clientController::list)
