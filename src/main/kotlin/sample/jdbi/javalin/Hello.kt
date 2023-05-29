@@ -17,7 +17,7 @@ fun main() {
         it.staticFiles.enableWebjars()
         it.vue.vueAppName = "app"
         it.vue.isDevFunction = { false }
-        it.vue.rootDirectory("/vue", Location.CLASSPATH, Config::class.java)
+//        it.vue.rootDirectory("/vue", Location.CLASSPATH, Config::class.java)
     }
 
     app.get("/", VueComponent("hello-world"))
