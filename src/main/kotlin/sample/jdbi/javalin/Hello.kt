@@ -16,12 +16,19 @@ fun main() {
     val app = Javalin.create {
         it.staticFiles.enableWebjars()
         it.vue.vueAppName = "app"
-        it.vue.isDevFunction = { false }
+//        it.vue.isDevFunction = { false }
 //        it.vue.rootDirectory("/vue", Location.CLASSPATH, Config::class.java)
     }
 
-    app.get("/", VueComponent("hello-world"))
     app.routes {
+        path("/") {
+            get(VueComponent("index"))
+            path("list") {
+                get("clients", VueComponent("list-clients"))
+                get("orders", VueComponent("list-orders"))
+                get("products", VueComponent("list-products"))
+            }
+        }
         path("clients") {
             get(clientController::list)
             post(clientController::insert)

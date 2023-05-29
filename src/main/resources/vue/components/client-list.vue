@@ -1,5 +1,5 @@
 <template id="client-list">
-  <ul v-if="clients">
+  <ul>
     <li v-for="client in clients" :key="client.id">
       {{ client.name }}
     </li>
