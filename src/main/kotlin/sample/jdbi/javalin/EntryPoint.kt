@@ -2,7 +2,6 @@ package sample.jdbi.javalin
 
 import io.javalin.Javalin
 import io.javalin.apibuilder.ApiBuilder.*
-import io.javalin.http.staticfiles.Location
 import io.javalin.vue.VueComponent
 import sample.jdbi.javalin.controllers.ClientController
 

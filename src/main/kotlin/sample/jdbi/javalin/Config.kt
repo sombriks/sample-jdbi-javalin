@@ -2,10 +2,13 @@ package sample.jdbi.javalin
 
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
+import liquibase.Contexts
+import liquibase.LabelExpression
 import liquibase.Liquibase
 import liquibase.database.jvm.JdbcConnection
 import liquibase.resource.ClassLoaderResourceAccessor
 import org.jdbi.v3.core.Jdbi
+import java.io.PrintWriter
 import javax.sql.DataSource
 
 object Config {
@@ -24,7 +27,10 @@ object Config {
             ClassLoaderResourceAccessor(),
             JdbcConnection(dataSource.connection)
         )
-        liquibase.update()
+        var writer = PrintWriter(System.out)
+        writer.use {
+            liquibase.update("*", writer)
+        }
     }
 
 }
