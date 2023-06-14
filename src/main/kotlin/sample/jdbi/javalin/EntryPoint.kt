@@ -2,6 +2,7 @@ package sample.jdbi.javalin
 
 import io.javalin.Javalin
 import io.javalin.apibuilder.ApiBuilder.*
+import io.javalin.http.staticfiles.Location
 import io.javalin.vue.VueComponent
 import sample.jdbi.javalin.controllers.ClientController
 
@@ -16,7 +17,7 @@ fun main() {
         it.staticFiles.enableWebjars()
         it.vue.vueAppName = "app"
 //        it.vue.isDevFunction = { false }
-//        it.vue.rootDirectory("/vue", Location.CLASSPATH, Config::class.java)
+        it.vue.rootDirectory("/vue", Location.CLASSPATH, Config::class.java)
     }
 
     app.routes {

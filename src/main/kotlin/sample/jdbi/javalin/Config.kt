@@ -9,6 +9,7 @@ import liquibase.database.jvm.JdbcConnection
 import liquibase.resource.ClassLoaderResourceAccessor
 import org.jdbi.v3.core.Jdbi
 import java.io.PrintWriter
+import java.io.Writer
 import javax.sql.DataSource
 
 object Config {
@@ -22,14 +23,11 @@ object Config {
     }
 
     fun migrateLatest() {
-        val liquibase = Liquibase(
-            "/db/changelog/root.xml",
-            ClassLoaderResourceAccessor(),
-            JdbcConnection(dataSource.connection)
-        )
-        var writer = PrintWriter(System.out)
-        writer.use {
-            liquibase.update("*", writer)
+        val connection = JdbcConnection(dataSource.connection)
+        connection.use {
+            Liquibase(
+                "/db/changelog/root.xml", ClassLoaderResourceAccessor(), connection
+            ).update()
         }
     }
 

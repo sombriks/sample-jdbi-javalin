@@ -25,7 +25,7 @@
         <dependency>
             <groupId>io.javalin</groupId>
             <artifactId>javalin</artifactId>
-            <version>5.5.0</version>
+            <version>5.6.0</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.jdbi/jdbi3-kotlin-sqlobject -->
         <dependency>
